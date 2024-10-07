@@ -1,4 +1,4 @@
-# Philosophy Intellectual Assistent
+# Philosophy Intellectual Assistant
 
 When working with philosophical texts or attempting to decompose a specific concept from a philosophical perspective (such as understanding how different schools of thought or philosophers interpret a particular idea), users face difficulties in finding relevant, concise, and contextually accurate information. The vast amount of data, specialized terminology, and complexity of the material make it challenging to quickly retrieve precise and structured answers to a wide range of philosophical questions.
 
@@ -8,7 +8,7 @@ This project was implemented for [LLM Zoomcamp](https://github.com/DataTalksClub
 
 ## Dataset
 
-Information about dataset you can see in `backend/flow.ipynb`.
+Information about dataset you can see in `backend/0_ingest.ipynb`.
 
 ## Preparation
 
@@ -23,5 +23,5 @@ You need to register on Groq (it's provide you free LLM access).
 
 ## What's implemented, launch order
 
-1. `ingest.ipynb` Data Ingestion (loading the data into the knowledge base): download dataset, dataset preparation (chuncking, adding metadata, creating embeddings), ElasticSearch ingestion (create indexes and search queries). 
-2. `rag.ipynb` - you can run RAG flow and try to answer questions here. Retrieval part based on Keyword search with Semantic Search.
+1. `0_ingest.ipynb` Data Ingestion (loading the data into the knowledge base): download dataset, dataset preparation (chuncking, adding metadata, creating embeddings), ElasticSearch ingestion (create indexes and search queries). 
+2. `1_rag.ipynb` - you can run RAG flow and try to answer questions here. Retrieval part based on Keyword search with Semantic Search. Evaluation based on comparison of response results with a semi-synthetic dataset.
