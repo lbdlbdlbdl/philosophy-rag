@@ -3,3 +3,5 @@ elasticsearch
 nltk
 spacy
 tqdm
+sentence_transformers
+groq
