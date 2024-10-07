@@ -1,10 +1,12 @@
 # Philosophy Intellectual Assistant
 
+This project was implemented for [LLM Zoomcamp](https://github.com/DataTalksClub/llm-zoomcamp) - a free course about LLMs and RAG.
+
 When working with philosophical texts or attempting to decompose a specific concept from a philosophical perspective (such as understanding how different schools of thought or philosophers interpret a particular idea), users face difficulties in finding relevant, concise, and contextually accurate information. The vast amount of data, specialized terminology, and complexity of the material make it challenging to quickly retrieve precise and structured answers to a wide range of philosophical questions.
 
-The RAG system solves this problem by providing structured responses tailored to users' needs, whether it's a  analysis of philosophical concepts or a brief summary of a particular philosopher's ideas. Additionally, the system can handle complex tasks like comparing excerpts from different texts, helping users understand how a passage correlates with the views or theories of another philosopher.
+The RAG system solves this problem by providing structured responses tailored to users' needs, whether it's a analysis of philosophical concepts or a brief summary of a particular philosopher's ideas. Additionally, the system can handle complex tasks like comparing excerpts from different texts, helping users understand how a passage correlates with the views or theories of another philosopher.
 
-This project was implemented for [LLM Zoomcamp](https://github.com/DataTalksClub/llm-zoomcamp) - a free course about LLMs and RAG.
+The quality of LLM's answers on these topics does not satisfy me, so I decided to collect a dataset from my sources (for starters, the Stanford encyclopedia), then I will replenish it from my knowledge base.
 
 ## Dataset
 
