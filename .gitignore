@@ -1,5 +1,5 @@
 # large files
-data/
+data/stanford/
 
 .env.codespaces
 grafana-storage/
