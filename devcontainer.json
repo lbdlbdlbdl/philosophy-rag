@@ -1,5 +1,6 @@
 {
     "name": "Philosophy RAG",
+    "build": {"dockerfile": "../Dockerfile"},
     "dockerComposeFile": "../docker-compose.yaml",
     "service": "notebook",
     "workspaceFolder": "/workspaces/app",
