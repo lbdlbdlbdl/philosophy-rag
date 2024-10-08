@@ -14,4 +14,4 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
     && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
 # run jupyter
-CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]
+CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root", "--NotebookApp.token=''", "--NotebookApp.password=''"]
