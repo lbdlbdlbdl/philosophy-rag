@@ -1,47 +1,46 @@
 services:
-  postgres:
-    image: postgres:13
-    environment:
-      POSTGRES_DB: ${POSTGRES_DB}
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-    ports:
-      - "${POSTGRES_PORT:-5432}:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
+  version: '3'
 
-  app:
-    build:
+  notebook:
+    build: 
       context: .
       dockerfile: Dockerfile
+    volumes:
+      - ..:/workspaces/app:cached
     environment:
       GROQ_API_KEY: ${GROQ_API_KEY}
       DATA_PATH: "data/"
     ports:
-      - "${APP_PORT:-5000}:5000"
-    depends_on:
-      - postgres
+      - "8888:8888"
+    env_file:
+      - .env
 
   grafana:
     image: grafana/grafana:latest
     ports:
       - "3000:3000"
     volumes:
-      - grafana_data:/var/lib/grafana
+      - grafana-storage:/var/lib/grafana
     environment:
-      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD:-admin}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD:-admin}
+      - GF_SERVER_ROOT_URL=${GRAFANA_ROOT_URL:-http://localhost:3000}
+
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_USER:-admin}
       - GF_AUTH_DISABLE_LOGIN_FORM=false
       - GF_AUTH_ANONYMOUS_ENABLED=false
       - GF_SECURITY_ALLOW_EMBEDDING=true
-      - GF_SECURITY_ADMIN_USER=${GRAFANA_ADMIN_USER:-admin}
       - GF_USERS_ALLOW_SIGN_UP=false
       - GF_USERS_ALLOW_ORG_CREATE=false
       - GF_USERS_AUTO_ASSIGN_ORG=true
       - GF_USERS_AUTO_ASSIGN_ORG_ROLE=Viewer
       - GF_SECURITY_SECRET_KEY=${GRAFANA_SECRET_KEY:-your_secret_key_here}
     depends_on:
-      - postgres
+      - notebook
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 4Gb
 
 volumes:
-  postgres_data:
-  grafana_data:
+  grafana-storage:
