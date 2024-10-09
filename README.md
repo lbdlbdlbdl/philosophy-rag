@@ -11,19 +11,31 @@ The quality of LLM's answers on these topics does not satisfy me, so I decided t
 ## Dataset
 
 Information about dataset you can see in `backend/0_ingest.ipynb`.
+Groud truth dataset is used and described in `backend/1_rag.ipynb`.
 
 ## Preparation
 
-1. Clone/fetch repo.
-2. You have to run this locally (or as i did in Github Codespaces).
-3. Run in bash: `pip install -r requirements.txt`
-4. Run in bash: `jupyter notebook`
-4. Run cells in a files in folder `/backend` in order that writes below, all further necessary instructions are indicated there. 
+See credentials in the `.env` file if needed - everything is included except for `GROQ_API_KEY` (Groq provides free LLM access). If you want to run the entire process locally, set your `GROQ_API_KEY` in the `.env` file before running. 
+I use Elastic hosting, credentials presented in `.env` file.
 
-Unfortunately I didn't hosted ElasticSearch anywhere, data wasn't saved, so you have to wait to data ingestion locally. I runned only subset of dataset (to save time).
-You need to register on Groq (it's provide you free LLM access).
+I run thhis project in Github Codespaces. You may too, or locally, or anywhere (because of docker-compose is presented). 
+To run:
+1. Clone/fetch the repo.
+2. Make Github Codespaces wih 4-cores.
+3. In the container's bash, run `docker-compose up --build` and wait for the dependencies to load and 2 ports to open.
+4. Go to PORTS section (here you'll see *jupyter* and *grafana* hosts). The entire program is run through Jupyter notebooks (see the description below). 
+5. Run the Jupyter Notebook cells in the `/backend` folder in the order listed below. All additional necessary instructions are provided in jups.
+ 
 
 ## What's implemented, launch order
 
-1. `0_ingest.ipynb` Data Ingestion (loading the data into the knowledge base): download dataset, dataset preparation (chuncking, adding metadata, creating embeddings), ElasticSearch ingestion (create indexes and search queries). 
-2. `1_rag.ipynb` - you can run RAG flow and try to ask questions here. Retrieval part based on Keyword search with Semantic Search. Evaluation based on comparison of response results with a semi-synthetic dataset.
+1. `0_ingest.ipynb` 
+    - For ingestion, I only ran a subset of the dataset to save time.
+    - Data Ingestion (loading the data into the knowledge base): download dataset, dataset preparation (chuncking, adding metadata, creating embeddings)
+    - ElasticSearch ingestion (create indexes and search queries). 
+
+2. `1_rag.ipynb` - you can run RAG flow and try to ask questions here. 
+    - Retrieval part based on Keyword search with Semantic Search. 
+    - Retrieval Evaluation based on comparison of response results with a semi-synthetic dataset, with MRR, MHR.
+    - Offline RAG evaluation with cosine similarity.
+    - Online RAG evaluation with user feedback, saving to elastic to see metrics in Grafana.
