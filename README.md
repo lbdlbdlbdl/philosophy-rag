@@ -24,7 +24,7 @@ To run:
 2. Make Github Codespaces wih 4-cores.
 3. In the container's bash, run `docker-compose up --build` and wait for the dependencies to load and 2 ports to open.
 4. Go to PORTS section (here you'll see *jupyter* and *grafana* hosts). The entire program is run through Jupyter notebooks (see the description below). 
-5. Run the Jupyter Notebook cells in the `/backend` folder in the order listed below. All additional necessary instructions are provided in jups.
+5. Run the Jupyter Notebook cells in the `/backend` folder in the order listed below. All additional necessary instructions are provided in notebooks.
  
 
 ## What's implemented, launch order
