@@ -6,3 +6,5 @@ spacy
 tqdm
 sentence_transformers
 groq
+matplotlib
+python-dotenv
