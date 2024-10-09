@@ -12,6 +12,7 @@ The quality of LLM's answers on these topics does not satisfy me, so I decided t
 
 Information about dataset you can see in `backend/0_ingest.ipynb`.
 Groud truth dataset is used and described in `backend/1_rag.ipynb`.
+`/data` folder has intermediate data.
 
 ## Preparation
 
@@ -22,7 +23,7 @@ I run this project in Github Codespaces. You may too, or locally, or anywhere (b
 To run:
 1. Clone/fetch the repo.
 2. (optional) Make Github Codespaces wih 4-cores.
-3. In the container's bash or in repo (it you run locally), run `docker-compose up --build` and wait for the dependencies to load and 2 ports to open.
+3. In the container's bash or in repo (if you run locally), run `docker-compose up --build` and wait for the dependencies to load and 2 ports to open.
 4. Go to PORTS section (here you'll see *jupyter* and *grafana* hosts). The entire program is run through Jupyter notebooks (see the description below). 
 5. Run the Jupyter Notebook cells in the `/backend` folder in the order listed below. All additional necessary instructions are provided in notebooks.
  
@@ -31,7 +32,7 @@ To run:
 
 1. `0_ingest.ipynb` 
     - For ingestion, I only ran a subset of the dataset to save time.
-    - Data Ingestion (loading the data into the knowledge base): download dataset, dataset preparation (chuncking, adding metadata, creating embeddings)
+    - Data Ingestion (loading the data into the knowledge base): download dataset, dataset preparation (chuncking, adding metadata, creating embeddings).
     - ElasticSearch ingestion (create indexes and search queries). 
 
 2. `1_rag.ipynb` - you can run RAG flow and try to ask questions here. 
